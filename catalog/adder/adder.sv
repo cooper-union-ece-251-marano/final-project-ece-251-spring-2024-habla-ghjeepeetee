@@ -26,21 +26,13 @@ module adder
    (input [bitSize-1:0] a,
     input [bitSize-1:0] b,
   output reg [bitSize-1:0] summation,
-   input carry_in,
-   input enabled,
-   output reg carry_out);
    //
    // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
    //
-   always @ (carry_in or b or a) begin
-   if(enabled) begin
-      {carry_out, summation} = a + b + carry_in;
+   always @ (b or a) begin
+      summation = a + b;
       end
-   else begin
-         summation = 'bz;
-         carry_out = 'bz;
-         end
-   end
+    
 endmodule
 
 `endif // ADDER
