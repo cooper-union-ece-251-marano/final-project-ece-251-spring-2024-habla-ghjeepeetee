@@ -1,31 +1,46 @@
-//////////////////////////////////////////////////////////////////////////////////
-// The Cooper Union
-// ECE 251 Spring 2024
-// Engineer: YOUR NAMES
-// 
-//     Create Date: 2023-02-07
-//     Module Name: adder
-//     Description: simple behavorial adder
+// Code your testbench here
+// or browse Examples
+///////////////////////////////////////////////////////////////////////////////
 //
-// Revision: 1.0
+// Full Adder module
 //
-//////////////////////////////////////////////////////////////////////////////////
+// Full adder module for your Computer Architecture Elements Catalog
+//
+// module: adder
+// hdl: Verilog
+//
+// author: Nolan Griffith <nolan.griffith@cooper.edu>
+//
+///////////////////////////////////////////////////////////////////////////////
+
 `ifndef ADDER
 `define ADDER
 
-`timescale 1ns/100ps
-
 module adder
-    #(parameter n = 32)(
-    //
-    // ---------------- PORT DEFINITIONS ----------------
-    //
+   //
+   // ---------------- PORT DEFINITIONS ----------------
+   //
+  # (parameter bitSize = 4)
 
-);
-    //
-    // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
-    //
-
+   // ADD YOUR MODULE INPUTS AND OUTPUTS HERE
+  (input [bitSize-1:0] p,
+   input [bitSize-1:0] q,
+  output reg [bitSize-1:0] summation,
+   input carry_in,
+   input enabled,
+   output reg carry_out);
+   //
+   // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
+   //
+  always @ (carry_in or q or p) begin
+   if(enabled) begin
+     {carry_out, summation} = p + q + carry_in;
+      end
+   else begin
+         summation = 'bz;
+         carry_out = 'bz;
+         end
+   end
 endmodule
 
 `endif // ADDER
