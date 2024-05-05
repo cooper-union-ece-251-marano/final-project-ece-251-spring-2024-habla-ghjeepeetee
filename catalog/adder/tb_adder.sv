@@ -7,7 +7,7 @@
 // module: tb_adder
 // hdl: Verilog
 //
-// author: Your Name <your.name@cooper.edu>
+// author: Nolan Griffith, Anthony Nosaryev 
 //
 ///////////////////////////////////////////////////////////////////////////////
 
