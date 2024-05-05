@@ -9,7 +9,7 @@
 // module: adder
 // hdl: Verilog
 //
-// author: Nolan Griffith <nolan.griffith@cooper.edu>
+// author: Nolan Griffith, Anthony Nosaryev
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -23,8 +23,8 @@ module adder
   # (parameter bitSize = 4)
 
    // ADD YOUR MODULE INPUTS AND OUTPUTS HERE
-  (input [bitSize-1:0] p,
-   input [bitSize-1:0] q,
+   (input [bitSize-1:0] a,
+    input [bitSize-1:0] b,
   output reg [bitSize-1:0] summation,
    input carry_in,
    input enabled,
