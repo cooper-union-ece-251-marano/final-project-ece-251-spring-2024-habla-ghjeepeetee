@@ -32,9 +32,9 @@ module adder
    //
    // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
    //
-  always @ (carry_in or q or p) begin
+   always @ (carry_in or b or a) begin
    if(enabled) begin
-     {carry_out, summation} = p + q + carry_in;
+      {carry_out, summation} = a + b + carry_in;
       end
    else begin
          summation = 'bz;
