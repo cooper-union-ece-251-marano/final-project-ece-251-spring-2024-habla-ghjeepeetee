@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
 // ECE 251 Spring 2024
-// Engineer: YOUR NAMES
+// Engineer: Nolan Griffith, Ant Nosaryev
 // 
-//     Create Date: 2023-02-07
+//     Create Date: 2024-05-04
 //     Module Name: aludec
 //     Description: 32-bit RISC ALU decoder
 //
@@ -15,9 +15,12 @@
 
 `timescale 1ns/100ps
 
-module aludec(input  logic [5:0] funct,
-              input  logic [1:0] aluop,
-              output logic [2:0] alucontrol);
+module aludec
+  #(parameter n = 32)(
+  input  logic [5:0] funct,
+  input  logic [1:0] aluop,
+  output logic [2:0] alucontrol
+);
 
   always @*
     case(aluop)
