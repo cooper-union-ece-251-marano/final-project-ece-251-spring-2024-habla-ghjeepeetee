@@ -39,7 +39,7 @@ module tb_adder;
       for (invect = 0; invect < 8; invect = invect + 1)
       begin
          // {a, b, cin} = invect [3:0];
-         // #10 $display ("abcin = %b, cout = %b, sum = %b", {a, b, cin}, cout, sum);
+         // #10 $display ("abcin = %b, cout = -%b, sum = %b", {a, b, cin}, cout, sum);
          {a} = invect [3:0];
          {b} = ~invect [3:0];
          #10 $display("a=%b, b=%b, c=%b", a, b, c);
