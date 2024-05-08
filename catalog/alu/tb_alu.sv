@@ -18,8 +18,8 @@
 
 module tb_alu;
     parameter N = 4;
-    localparam p = 10;
-    localparam p_high = p;
+    localparam p = 5;
+    localparam p_high = p / 2;
 
     reg CLK;
     reg [N-1:0] A, B;
@@ -74,15 +74,6 @@ module tb_alu;
         TEMP = RESULT;
         ALUCONTROL = 3'b100; // gets low
         #10 $display("MULT\ta=%b\tb=%b\tresult=%b%b\tzero=%b\n", A, B, TEMP, RESULT, ZERO);
-
-        TEMP = 4'b0000;
-        // DIV, MFHI, MFLO
-        A = 4'b1100;
-        B = 4'b0101;
-        ALUCONTROL = 3'b101; // divides
-        #10
-        ALUCONTROL = 3'b100; // gets low (quotient)
-        #10 $display("DIV\ta=%b\tb=%b\tresult=%b\tzero=%b\n", A, B, RESULT, ZERO);
 
         // SUB
         A = 4'b0110;

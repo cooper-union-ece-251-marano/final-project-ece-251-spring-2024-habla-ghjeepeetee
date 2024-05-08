@@ -36,7 +36,7 @@ module alu
     assign zero = (result == 0);
 
     initial begin
-        HiLo = {n{1'b0}};
+        HiLo = {2*n{1'b0}};
     end
 
     always @(a,b,alucontrol) begin
@@ -45,25 +45,19 @@ module alu
             3'b000: result = a & b; // and
             3'b001: result = a | b; // or
             3'b010: result = a + b; // add
-            3'b100: result = HiLo[n-1:0]; // MFLO
-            3'b101: result = HiLo[2*n - 1:n]; // MFHI
+            3'b100: result = HiLo[n - 1 : 0]; // MFLO
+            3'b101: result = HiLo[2*n - 1 : n]; // MFHI
             3'b110: result = diff; // sub
             3'b111: result = diff[n-1]; // slt
+            //4'b1000 result = ~(a | b) // nor, removed due to inconvenient alucontrol code length
         endcase
     end
     
-	//Multiply and divide results are only stored at clock falling edge.
+	//Multiply results are only stored at clock falling edge.
     always @(negedge clk) begin
-        case (alucontrol)
-            3'b011: HiLo = a * b; // mult
-            3'b101: // div
-                begin
-                    HiLo[n-1:0] = a / b;
-                    HiLo[2*n - 1:n] = a % b;
-                end
-            // note that div alucontrol code is the same as MFHI
-            // mind clock cycles
-        endcase
+        if (alucontrol == 3'b011) begin
+            HiLo = a * b; // mult
+        end
     end
     
 endmodule
