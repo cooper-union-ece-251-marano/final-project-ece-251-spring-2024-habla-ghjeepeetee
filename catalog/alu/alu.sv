@@ -40,15 +40,15 @@ module alu
     end
 
     always @(a,b,alucontrol) begin
+        diff = a + ~b + 1;
         case (alucontrol)
             3'b000: result = a & b; // and
             3'b001: result = a | b; // or
             3'b010: result = a + b; // add
-            3'b110: result = a + ~b + 1; // sub
             3'b100: result = HiLo[n-1:0]; // MFLO
             3'b101: result = HiLo[2*n - 1:n]; // MFHI
-            3'b111: diff = a + ~b + 1;
-                    result = diff[n-1]; // slt
+            3'b110: result = diff; // sub
+            3'b111: result = diff[n-1]; // slt
         endcase
     end
     
@@ -61,6 +61,8 @@ module alu
                     HiLo[n-1:0] = a / b;
                     HiLo[2*n - 1:n] = a % b;
                 end
+            // note that div alucontrol code is the same as MFHI
+            // mind clock cycles
         endcase
     end
     
