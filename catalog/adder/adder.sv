@@ -20,18 +20,19 @@ module adder
    //
    // ---------------- PORT DEFINITIONS ----------------
    //
-   # (parameter bitSize = 32)
+   # (parameter n = 32)
 
    // ADD YOUR MODULE INPUTS AND OUTPUTS HERE
-   (input [bitSize-1:0] a,
-    input [bitSize-1:0] b,
-    output reg [bitSize-1:0] c,
+   (input [n-1:0] a,
+    input [n-1:0] b,
+    output reg [n-1:0] c
+   );
    //
    // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
    //
-   always @ (b or a) begin
+   always @(a, b) begin
       c = a + b;
-      end
+   end
     
 endmodule
 

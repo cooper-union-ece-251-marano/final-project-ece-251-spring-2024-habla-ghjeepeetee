@@ -17,8 +17,10 @@
 
 module tb_adder;
 
-   reg [3:0] a, b;   //inputs are reg for test bench
-   wire [3:0] c;     //outputs are wire for test bench
+   parameter N = 4;
+
+   reg [N-1:0] A, B;   //inputs are reg for test bench
+   wire [N-1:0] C;     //outputs are wire for test bench
    
    //
    // ---------------- INITIALIZE TEST BENCH ----------------
@@ -35,14 +37,14 @@ module tb_adder;
    //apply input vectors
    initial
    begin: apply_stimulus
-      reg[3:0] invect; //invect[3] terminates the for loop
-      for (invect = 0; invect < 8; invect = invect + 1)
+      reg[N-1:0] invect; //invect[3] terminates the for loop
+      for (invect = 0; invect < 2**N - 1; invect = invect + 1)
       begin
          // {a, b, cin} = invect [3:0];
          // #10 $display ("abcin = %b, cout = -%b, sum = %b", {a, b, cin}, cout, sum);
-         {a} = invect [3:0];
-         {b} = ~invect [3:0];
-         #10 $display("a=%b, b=%b, c=%b", a, b, c);
+         {A} = invect [N-1:0];
+         {B} = ~invect [N-1:0];
+         #10 $display("a=%b, b=%b, c=%b", A, B, C);
       end
       $finish;
    end
@@ -50,6 +52,6 @@ module tb_adder;
    //
    // ---------------- INSTANTIATE UNIT UNDER TEST (UUT) ----------------
    //
-   adder uut(.A(a), .B(b), .C(c));
+   adder uut(.a(A), .b(B), .c(C));
 
 endmodule
