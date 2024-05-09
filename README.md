@@ -4,7 +4,10 @@
 
 Anthony Noseryev, Nolan Griffith
 
-This work is based off the MIPS Verilog code by [Harris and Harris](https://pages.hmc.edu/harris/ddca/ddca2e.html). We give credit to Professor Rob Marano <rob@cooper.edu> for guidance with this implementation. We give credit to Azra Rangwala and Alex Faust for guidance in creating ISAArchitectureGreenSheet.
+This work is based off the MIPS Verilog code by [Harris and Harris](https://pages.hmc.edu/harris/ddca/ddca2e.html). We give credit to Professor Rob Marano <rob@cooper.edu> for guidance with this implementation. We give credit to Azra Rangwala and Alex Faust for guidance in creating ISAArchitectureGreenSheet and how to successfully demo. 
+
+Attached is the ISAArchitectureGreenSheet (https://docs.google.com/document/d/1fsQWL_-b2_XJn1Krdy7ns-I0NWAwYwXx5b1HyykORf4/edit).
+
 
 We used recursion (a Fibonacci Sequence in order to test our components). 
 Attached is just a small demo and proof that it works. (https://youtu.be/s_iX4-y__zM?feature=shared)
