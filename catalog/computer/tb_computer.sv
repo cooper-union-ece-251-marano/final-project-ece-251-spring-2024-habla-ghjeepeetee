@@ -134,7 +134,7 @@ module tb_computer;
 
     if (dut.dmem.RAM[84] === 32'h0d)
       begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0096);
+        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0d);
         firstTest = 1'b1;
       end
     if(memwrite) begin
