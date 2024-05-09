@@ -7,7 +7,7 @@
         sw $v0, 84($0)      # save fib(n) to dmem
         lw $ra, 12($sp)     # restore ra
         addi $sp, $sp, 16   # restore stack pointer
-        addi $fp, $sp, 4    # restore frame pointer
+        addi $fp, $sp, 0    # restore frame pointer
         j end               # finish
 
 fib:    addi $sp, $sp, -16  # 16 byte stack frame
