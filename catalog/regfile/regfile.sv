@@ -45,7 +45,7 @@ module regfile
     // on falling edge of clk
 
     initial begin: STACK_POINT_TOP_OF_MEMORY
-        rf[29] = 8'h7ffffffc;
+        rf[29] = 255;
     end
 
     always @(posedge clk) begin
