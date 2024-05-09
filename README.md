@@ -5,6 +5,120 @@ This work is based off the MIPS Verilog code by [Harris and Harris](https://page
 
 The basis of the single cycle computer as provided by these Verilog components:
 
+
+¿HablaGeePeeTee? Reference Data
+
+name
+syntax
+Type
+Operation
+Opcode/Funct (hex)
+And
+and
+R
+R[rd] = R[rs] & R[rt]
+0/24 (hex)
+Or
+or
+R
+R[rd] = R[rs] | R[rt]
+0/25 (hex)
+Add
+add
+R
+R[rd] = R[rs] + R[rt]
+0/20 (hex)
+Add Immediate
+addi
+I
+R[rt] = R[rs] + SignExtImm
+24 (hex)
+Move From Lo
+mflo
+R
+R[rd] = Lo
+0/12 (hex)
+Move From Hi
+mfhi
+R
+R[rd] = Hi
+0/10 (hex)
+Subtract
+sub
+R
+R[rd] = R[rs] - R[rt]
+0/22 (hex)
+Jump and Link
+jal
+I
+R[15]= PC+4; 
+PC =JumpAddr
+3 (hex)
+Jump
+j
+I
+PC =JumpAddr
+2 (hex)
+Jump Register
+jr
+R
+PC = R[rs]
+0/8 (hex)
+Load Word
+lw
+I
+R[rt] = M[R[rs]+SignExtImm]
+23 (hex)
+Store Word
+sw
+I
+M[R[rs]+SignExtImm] = R[rt]
+2B (hex)
+Branch on Equal
+beq
+I
+if(R[rs]==R[rt]) 
+PC = PC+4+BranchAddr
+4 (hex)
+
+
+**//4'b1000 result = ~(a | b) // nor, removed due to inconvenient alucontrol code length
+
+
+**Kept same instruction format
+
+
+
+Register Name
+Number
+Use
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```verilog
 // mips.sv
 // From Section 7.6 of Digital Design & Computer Architecture
