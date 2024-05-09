@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
 // ECE 251 Spring 2024
-// Engineer: Prof Rob Marano
+// Engineer: Anthony Nosaryev, Nolan Griffith
 // 
 //     Create Date: 2023-02-07
 //     Module Name: maindec
