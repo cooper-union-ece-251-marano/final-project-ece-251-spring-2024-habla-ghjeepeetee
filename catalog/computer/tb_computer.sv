@@ -32,11 +32,6 @@ module tb_computer;
 
   // instantiate the CPU as the device to be tested
   computer dut(clk, reset, writedata, dataadr, memwrite);
-  // generate clock to sequence tests
-  // always
-  //   begin
-  //     clk <= 1; # 5; clk <= 0; # 5;
-  //   end
 
   // instantiate the clock
   clock dut1(.ENABLE(clk_enable), .CLOCK(clk));
@@ -46,7 +41,7 @@ module tb_computer;
     firstTest = 1'b0;
     secondTest = 1'b0;
     $dumpfile("tb_computer.vcd");
-    $dumpvars(0,dut1,clk,reset,writedata,dataadr,memwrite);
+    $dumpvars(0,dut,dut1,clk,reset,writedata,dataadr,memwrite);
     $monitor("t=%t\t0x%7h\t%7d\t%8d",$realtime,writedata,dataadr,memwrite);
     // $dumpvars(0,clk,a,b,ctrl,result,zero,negative,carryOut,overflow);
     // $display("Ctl Z  N  O  C  A                    B                    ALUresult");
@@ -55,8 +50,8 @@ module tb_computer;
 
   // initialize test
   initial begin
-    #0 clk_enable <= 0; #50 reset <= 1; # 50; reset <= 0; #50 clk_enable <= 1;
-    #10000 $finish;  // #100 $finish;
+    #0 clk_enable <= 0; #5 reset <= 1; # 5; reset <= 0; #0 clk_enable <= 1;
+    #10000 $finish;
   end
 
   // monitor what happens at posedge of clock transition
@@ -124,17 +119,9 @@ module tb_computer;
   end
 
   always @(negedge clk, posedge clk) begin
-    // check results
-    // TODO: You need to update the checks below
-    // if (dut.dmem.RAM[84] === 32'h9504)
-    //   begin
-    //     $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h9504);
-    //     firstTest = 1'b1;
-    //   end
-
-    if (dut.dmem.RAM[84] === 32'h0d)
+    if (dut.dmem.RAM[84/4] === 32'h0d)
       begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0d);
+        $display("Successfully wrote 0x%4h at RAM[%3d]", 32'h0d, 84);
         firstTest = 1'b1;
       end
     if(memwrite) begin

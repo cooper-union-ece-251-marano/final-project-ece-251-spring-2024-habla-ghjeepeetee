@@ -44,8 +44,8 @@ module regfile
     // note: for pipelined processor, write third port
     // on falling edge of clk
 
-    initial begin: STACK_POINT_TOP_OF_MEMORY
-        rf[29] = 255;
+    initial begin: INITIALISE_STACK_POINTER
+        rf[29] = 32'b11111111; // dependent on memory size
     end
 
     always @(posedge clk) begin
